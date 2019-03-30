@@ -4,38 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./index.css">
     <title>Document</title>
   </head>
   <body>
     <h1>图片切换</h1>
     <ul>
       <li>
-        <a href="./images/01.png" onclick="showPic(this);return false;"
+        <a title="01-大海蓝天" href="./images/01.png""
           >大海蓝天</a
         >
       </li>
       <li>
-        <a href="./images/02.png" onclick="showPic(this);return false;">狗狗</a>
+        <a title="02-狗狗~~~~~" href="./images/02.png" >狗狗</a>
       </li>
       <li>
-        <a href="./images/03.png" onclick="showPic(this);return false;"
+        <a title="03-熊熊熊熊熊熊熊熊" href="./images/03.png" 
           >可爱的熊</a
         >
       </li>
       <li>
-        <a href="./images/04.png" onclick="showPic(this);return false;"
+        <a title="04-cat" href="./images/04.png" 
           >可爱的猫</a
         >
       </li>
     </ul>
     <img id="placeholder" src="./images/01.png" alt="" />
+    <p id="pval">这里是图片描述</p>
 
     <script>
-      function showPic(element) {
-        var source = element.getAttribute('href')
+      var links = document.getElementsByTagName('a')
+      for(let i = 0; i< links.length;i++) {
+        links[i].onclick = function(e){
+        var source = links[i].getAttribute('href')
         var placeholder = document.getElementById('placeholder')
         placeholder.setAttribute('src', source)
+        var text = links[i].getAttribute('title')
+        var pval = document.getElementById('pval')
+        // pval.firstChild.nodeValue = text
+        pval.innerText = text
+        return false
+        } 
       }
+      // function showPic(element) {
+      //   var source = element.getAttribute('href')
+      //   var placeholder = document.getElementById('placeholder')
+      //   placeholder.setAttribute('src', source)
+      // }
+      // function countBodyChildren() {
+      //   var body_element = document.getElementsByTagName('body')[0]
+      //   console.log(body_element.childNodes)
+      // }
+      // window.onload = countBodyChildren()
     </script>
   </body>
 </html>
